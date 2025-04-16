@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: webflux-study
+  r2dbc:
+    url: r2dbc:postgresql://test
+    username: test
+    password: test!

@@ -1,0 +1,61 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.9.25'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.9.25'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example.toygry'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 나중에 redis 공부용
+    // implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+
+    // 핵심 ! 비동기 web api 용 !!
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // JSON 역직렬화 용
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+
+    // Kotlin 코루틴 + Reactor 통합
+    implementation "io.projectreactor.kotlin:reactor-kotlin-extensions"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"
+
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
+    // R2DBC - 리액티브 DB 연동
+    implementation "org.springframework.boot:spring-boot-starter-data-r2dbc"
+    implementation "org.postgresql:r2dbc-postgresql"  // PostgreSQL 리액티브 드라이버
+
+    // runtimeOnly 'org.postgresql:postgresql'
+
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+//    implementation "org.slf4j:slf4j-api:2.0.7"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll '-Xjsr305=strict'
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
