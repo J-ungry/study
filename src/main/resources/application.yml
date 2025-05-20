@@ -2,6 +2,10 @@ spring:
   application:
     name: webflux-study
   r2dbc:
-    url: r2dbc:postgresql://test
-    username: test
-    password: test!
+    url: r2dbc:postgresql://localhost:5432/webflux_test
+    username: testuser
+    password: testpass
+  data:
+    redis:
+      host: localhost
+      port: 6379

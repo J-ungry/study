@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
     // 나중에 redis 공부용
-    // implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+     implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
 
     // 핵심 ! 비동기 web api 용 !!
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -42,6 +42,7 @@ dependencies {
 
     implementation "org.springframework.boot:spring-boot-starter-validation"
 //    implementation "org.slf4j:slf4j-api:2.0.7"
+    implementation 'org.springframework.boot:spring-boot-starter-aop:3.4.5'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
